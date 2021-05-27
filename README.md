@@ -2,4 +2,4 @@ To dockerize the application i have created Dockerfile to create the docker imag
 
 Forwarding http traffic to https we need ssl certificates and domain name. So i skipped nginx part
 
-As per your requirement the application will be run if you clone the code and run docker-compose.yaml the apllication will run
+As per your requirement the application will run if you clone the code and run docker-compose.yaml file
