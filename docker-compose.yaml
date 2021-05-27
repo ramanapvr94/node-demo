@@ -1,0 +1,44 @@
+version: '3'
+services:
+    web:
+        container_name: nodeapp
+        image: nodeapp
+        depends_on:
+            - mysql
+            - mongo
+        volumes:
+          - type: volume
+              source: nodeapp-data
+              target: /var/lib/nodeapp/data
+        ports:
+            - '51005:51005'
+        links:
+            -mysql
+            -mongo
+    mysql:
+        container_name: mysql
+        image: mysql
+        volumes:
+          - type: volume
+              source: db-data
+              target: /var/lib/mysql/data
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: test_db
+        ports:
+            - '3306:3306'
+         
+    mongo:
+        container_name: mongo
+        image: mongo
+        volumes:
+          - type: volume
+              source: db-data
+              target: /var/lib/mongo/data
+        ports:
+            - '27017:27017'
+            
+volumes:
+  db-data:
+  
+  nodeapp-data:    
